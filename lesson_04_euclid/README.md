@@ -1,4 +1,4 @@
-# Euklydischer Algorithmus
+# Euklidischer Algorithmus
 
 ## Ziel dieser Lesson
 
@@ -8,3 +8,5 @@
     * Rückgabewerte
     * Parameter
     * Rekursion
+
+[Wiki Artikel mit Algorithmen](https://de.wikipedia.org/wiki/Euklidischer_Algorithmus)

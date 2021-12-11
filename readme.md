@@ -1,6 +1,12 @@
 # Dies ist ein Projekt des CVJM Walheim
 Ziel dieses Kurses soll es sein Jugendlichen aus Walheim das Programmieren nahe zu bringen. 
 
+## Infrastuktur
+* Dart als Programmiersprache 
+* Framework Flutter für muli Plattfrom Apps (iOS und Android)
+* Visual Studio Code als IDE
+* Die Slides werden mit Marp (VS Code Extension) in MarkDown erstellt
+
 ## Lektionen
  * [x] 01 Hello world (Dart)
  * [x] 02 Datentypen (Dart)

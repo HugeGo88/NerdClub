@@ -1,0 +1,54 @@
+/* @theme cvjmSlides */
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,900italic,900,700italic,700,600italic,600,400italic,300italic,300,200italic');
+
+@import 'default';
+:root {
+  --cvjmRed: #ED1443;
+  font-family: 'Source Sans Pro';
+}
+
+section {
+  background: #ffffff;
+}
+header,
+footer,
+section::after {
+  box-sizing: border-box;
+  font-size: 66%;
+  height: 70px;
+  line-height: 70px;
+  overflow: hidden;
+  padding: 10px 5px;
+  position: absolute;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 48pt;
+  color: black;
+}
+
+h2 {
+  font-size: 32pt;
+}
+ul {
+  list-style-type: none !important;
+  font-size: 28pt;
+}
+li{
+  margin-top: -30px;
+  margin-bottom: -30px;
+}
+li:before {   
+  content: "";  
+  border-color: transparent var(--cvjmRed);  
+  border-style: solid;  
+  border-width: 0.35em 0 0.35em 0.45em;  
+  display: block;  
+  height: 0;  
+  width: 0;  
+  left: -1em;  
+  top: 1em;  
+  position: relative;  
+} 
