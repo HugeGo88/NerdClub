@@ -1,1 +1,7 @@
-A simple command-line application.
+# Kontrol Sturkturen
+
+## Ziel dieser Lesson
+
+* Was sind Kontrol Strukturen?
+* Warum müssen wir den Code Steuern?
+* Welche Möglichkeiten haben wir?

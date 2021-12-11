@@ -2,11 +2,13 @@
 Ziel dieses Kurses soll es sein Jugendlichen aus Walheim das Programmieren nahe zu bringen. 
 
 ## Lektionen
- * [x] Hello world (Dart)
- * [x] Datentypen (Dart)
- * [x] Kontrol Strukturen (Dart)
- * [x] Übungen mit dem euklydischen Algorithmus (Dart)
- * [x] Einführung in Klassen (Dart)
- * [x] Ein kleines Adventure Game (Dart)
+ * [x] 01 Hello world (Dart)
+ * [x] 02 Datentypen (Dart)
+ * [x] 03 Kontrol Strukturen (Dart)
+ * [x] 04 Übungen mit dem euklydischen Algorithmus (Dart)
+ * [x] 05 Einführung in Klassen (Dart)
+ * [x] 06 Ein kleines Adventure Game (Dart)
  * [ ] Speichern von "Spielständen"
+ * [ ] Wie Teste ich mein Programm?
+ * [ ] Programmieren mit git
  * [ ] Ein kleines Adventure Game (in Flutter)
