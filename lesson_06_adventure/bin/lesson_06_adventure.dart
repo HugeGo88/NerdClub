@@ -1,5 +1,5 @@
 void main(List<String> arguments) {
-  Character robert = Character('Robert', [Item('Axt', 5)]);
+  Character robert = Character('Robert', [Item('Axt', 5)], [Item('Trank', 50)]);
   Character olaf = Character('Olaf', [Item('Schwert', 7), Item('Bogen', 10)]);
   int i = 1;
   while (!olaf.defeated && !robert.defeated) {
@@ -34,7 +34,15 @@ class Character {
     }
   }
 
-  //TODO: Füge Methode hinzu zum Heiltrank nehmen.
+  void drinkElixir() {
+    if (_elixirs.isEmpty) {
+      return;
+    }
+    //_health = _health + _elixirs.last._value; ist das gleiche wie eine Zeilte weiter unten
+    _health += _elixirs
+        .last._value; // Trank Gesundheit zur eigenen Gesundheit hinzufügen
+    _elixirs.removeLast(); // Trank aus Inventar entfernen
+  }
 
   void receiveItem(Character enemy) {
     _waepons.addAll(enemy._waepons);
@@ -48,7 +56,7 @@ class Character {
     _health = _health - enemy._damage;
   }
 
-  Character(this._name, this._waepons);
+  Character(this._name, this._waepons, [this._elixirs = const []]);
 
   final String _name;
   int _health = 100;
@@ -70,7 +78,7 @@ class Character {
 
   List<Item> _waepons;
 
-  final List<Item> _elixirs = [];
+  List<Item> _elixirs;
   int get _healing {
     int totalHealing = 0;
     for (var elixir in _elixirs) {
