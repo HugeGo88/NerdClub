@@ -1,6 +1,5 @@
 void main(List<String> arguments) {
-  Character robert = Character(
-      'Robert', [Item('Axt', 15)], [Item('Trank', 50)], Attitude.evil);
+  Character robert = Character('Robert', [Item('Axt', 15)], [Item('Trank', 50)], Attitude.evil);
   Character olaf = Character('Olaf', [Item('Schwert', 7), Item('Bogen', 10)]);
   int i = 1;
   while (!olaf.defeated && !robert.defeated) {
@@ -86,8 +85,7 @@ class Character {
       return;
     }
     //_health = _health + _elixirs.last._value; ist das gleiche wie eine Zeilte weiter unten
-    _health += _elixirs
-        .last._value; // Trank Gesundheit zur eigenen Gesundheit hinzufügen
+    _health += _elixirs.last._value; // Trank Gesundheit zur eigenen Gesundheit hinzufügen
     _elixirs.removeLast(); // Trank aus Inventar entfernen
     print('********$_name trinkt einen Heiltrank********');
   }
@@ -104,8 +102,7 @@ class Character {
     _health = _health - enemy._damage;
   }
 
-  Character(this._name, this._waepons,
-      [this._elixirs = const [], this._attitude = Attitude.good]);
+  Character(this._name, this._waepons, [this._elixirs = const [], this._attitude = Attitude.good]);
 
   final String _name;
   int _health = 100;

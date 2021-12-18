@@ -1,5 +1,11 @@
 {
     "markdown.marp.themes": [
         "./themes/cvjmSlides.scss"
-      ]
+      ],
+      "dart.lineLength": 200,
+      "[dart]": {
+        "editor.rulers": [
+            0
+        ],
+    },
 }
