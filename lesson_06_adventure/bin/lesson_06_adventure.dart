@@ -1,12 +1,17 @@
 void main(List<String> arguments) {
-  Character robert = Character('Robert', [Item('Axt', 15)]);
-  Character olaf = Character('Olaf', [Item('Schwert', 20), Item('Bogen', 10)]);
-  //TODO: Kämpfe bis robert Olaf besiegt hat (While-Schleife)
-  robert.fight(olaf);
+  Character robert = Character('Robert', [Item('Axt', 5)]);
+  Character olaf = Character('Olaf', [Item('Schwert', 7), Item('Bogen', 10)]);
+  int i = 1;
+  while (!olaf.defeated && !robert.defeated) {
+    robert.fight(olaf);
+    print('Runde: $i');
+    print(robert);
+    print(olaf);
+    print('****************');
+    i++;
+  }
 
   //TODO: Nach dem Kampf schau nach ob deine Gesundheit unter 20 ist und nimm einen Trank
-  print(robert);
-  print(olaf);
 }
 
 class Character {
@@ -53,6 +58,14 @@ class Character {
       totalDamage = totalDamage + item._value;
     }
     return totalDamage;
+  }
+
+  bool get defeated {
+    if (_health <= 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   List<Item> _waepons;
