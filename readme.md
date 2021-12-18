@@ -3,7 +3,7 @@ Ziel dieses Kurses soll es sein Jugendlichen aus Walheim das Programmieren nahe 
 
 ## Infrastuktur
 * Dart als Programmiersprache 
-* Framework Flutter für muli Plattfrom Apps (iOS und Android)
+* Framework Flutter für multi Plattfrom Apps (iOS und Android)
 * Visual Studio Code als IDE
 * Die Slides werden mit Marp ([VS Code Extension](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode)) in MarkDown erstellt
 

@@ -12,4 +12,4 @@ Hier wird das erste eigene kleine Spiel programmiert. Dabei sind der Kreativitä
 * [ ] Nach dem Kampf schau nach ob deine Gesundheit unter 20 ist und nimm einen Trank zu dir
 * [ ] Wenn du einen Gegner besiegt hast, füge einen Trank zu deinem Inventar hinzu
 * [ ] Füge der Charakter Klasse eine Methode zum Trank nehmen hinzu
-* [ ] Zeige in der toString methode an wieviele Tränke dein Held hat
+* [x] Zeige in der toString methode an wieviele Tränke dein Held hat
