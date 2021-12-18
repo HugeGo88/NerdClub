@@ -14,6 +14,7 @@ Ziel dieses Kurses soll es sein Jugendlichen aus Walheim das Programmieren nahe 
  * [x] 04 Übungen mit dem euklydischen Algorithmus (Dart)
  * [x] 05 Einführung in Klassen (Dart)
  * [x] 06 Ein kleines Adventure Game (Dart)
+ * [ ] 07 Passwort Generator
  * [ ] Speichern von "Spielständen"
  * [ ] Wie Teste ich mein Programm?
  * [x] Programmieren mit git
