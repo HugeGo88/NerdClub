@@ -10,38 +10,43 @@ void main(List<String> arguments) {
     print('****************');
     i++;
   }
-
-  //TODO: Nach dem Kampf schau nach ob deine Gesundheit unter 20 ist und nimm einen Trank
+  print(robert);
+  print(olaf);
 }
 
 class Character {
   // TODO: Wenn Gegner besiegt füge Trank hinzu
   void fight(Character enemy) {
     // if no health not able to fight
-    if (_health <= 0) return;
+    if (defeated) return;
     // if enemy has no health get his items and stop fighting
-    if (enemy._health <= 0) {
+    if (enemy.defeated) {
       receiveItem(enemy);
       enemy.loseItems();
       return;
     }
     enemy.culculateDamage(this);
-    if (enemy._health > 0) {
+    if (!enemy.defeated) {
       culculateDamage(enemy);
     } else {
       receiveItem(enemy);
       enemy.loseItems();
+      _elixirs.add(Item('Trank von Gegner', 50));
     }
+    // Beide trinken ein Elixir wenn sie können
+    enemy.drinkElixir();
+    drinkElixir();
   }
 
   void drinkElixir() {
-    if (_elixirs.isEmpty) {
+    if (_elixirs.isEmpty || _health > 20) {
       return;
     }
     //_health = _health + _elixirs.last._value; ist das gleiche wie eine Zeilte weiter unten
     _health += _elixirs
         .last._value; // Trank Gesundheit zur eigenen Gesundheit hinzufügen
     _elixirs.removeLast(); // Trank aus Inventar entfernen
+    print('********$_name trinkt einen Heiltrank********');
   }
 
   void receiveItem(Character enemy) {
