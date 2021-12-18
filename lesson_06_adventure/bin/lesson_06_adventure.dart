@@ -1,6 +1,6 @@
 void main(List<String> arguments) {
-  Character robert =
-      Character('Robert', [Item('Axt', 15)], [Item('Trank', 50)]);
+  Character robert = Character(
+      'Robert', [Item('Axt', 15)], [Item('Trank', 50)], Attitude.evil);
   Character olaf = Character('Olaf', [Item('Schwert', 7), Item('Bogen', 10)]);
   int i = 1;
   while (!olaf.defeated && !robert.defeated) {
@@ -79,6 +79,8 @@ class Character {
     }
   }
 
+  Attitude _attitude;
+
   void drinkElixir() {
     if (_elixirs.isEmpty || _health > 20) {
       return;
@@ -102,7 +104,8 @@ class Character {
     _health = _health - enemy._damage;
   }
 
-  Character(this._name, this._waepons, [this._elixirs = const []]);
+  Character(this._name, this._waepons,
+      [this._elixirs = const [], this._attitude = Attitude.good]);
 
   final String _name;
   int _health = 100;
@@ -135,9 +138,16 @@ class Character {
 
   @override
   String toString() {
-    return '$_name hat $_damage Schaden und $_health Gesundheit, ${_elixirs.length} Heiltränke ($_healing HP)';
+    switch (_attitude) {
+      case Attitude.good:
+        return 'Der Held $_name hat $_damage Schaden und $_health Gesundheit, ${_elixirs.length} Heiltränke ($_healing HP)';
+      case Attitude.evil:
+        return 'Der Bösewicht $_name hat $_damage Schaden und $_health Gesundheit, ${_elixirs.length} Heiltränke ($_healing HP)';
+    }
   }
 }
+
+enum Attitude { evil, good }
 
 class Item {
   Item(this._name, this._value);
