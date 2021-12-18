@@ -16,5 +16,5 @@ Ziel dieses Kurses soll es sein Jugendlichen aus Walheim das Programmieren nahe 
  * [x] 06 Ein kleines Adventure Game (Dart)
  * [ ] Speichern von "Spielständen"
  * [ ] Wie Teste ich mein Programm?
- * [ ] Programmieren mit git
+ * [x] Programmieren mit git
  * [ ] Ein kleines Adventure Game (in Flutter)
