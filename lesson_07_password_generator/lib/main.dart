@@ -37,8 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _generatePassword(String masterPW) {
     setState(() {
-      //TODO: Website aus Textfeld lesen
-      _password = Crypt.sha256('web.com', salt: _controllerMasterPassword.text).hash.substring(0, 10);
+      _password = Crypt.sha256(_controllerWebsite.text, salt: _controllerMasterPassword.text).hash.substring(0, 10);
     });
   }
 
