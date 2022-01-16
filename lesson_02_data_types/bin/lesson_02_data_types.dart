@@ -1,8 +1,9 @@
+// ignore_for_file: unused_local_variable
+
 void main(List<String> arguments) {
   /*DATEN TYPEN*/
   // Datentype VariablenName = Wert ;
-  String myString =
-      'Programmieren ist toll'; // Zeichenkette (Buchstaben, Zahlen und Zeichen)
+  String myString = 'Programmieren ist toll'; // Zeichenkette (Buchstaben, Zahlen und Zeichen)
   int myInt = 15; // Ganzzahl (Keine Kommazaheln)
   double myDouble = 15.5; // Fließkommazahl (Kommazahlen)
   bool myBool = true; // Wahrheitswerte (richtig oder falsch)

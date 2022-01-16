@@ -64,7 +64,7 @@ class Character {
     }
   }
 
-  Attitude _attitude;
+  final Attitude _attitude;
 
   void drinkElixir() {
     if (_elixirs.isEmpty || _health > 20) {
@@ -110,7 +110,7 @@ class Character {
 
   List<Item> _waepons;
 
-  List<Item> _elixirs;
+  final List<Item> _elixirs;
   int get _healing {
     int totalHealing = 0;
     for (var elixir in _elixirs) {
