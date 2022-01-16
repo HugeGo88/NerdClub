@@ -31,23 +31,22 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  late TextEditingController _controller;
+  late TextEditingController _controllerMasterPassword;
+  late TextEditingController _controllerWebsite;
   String _password = 'Nichts';
 
   void _generatePassword(String masterPW) {
     setState(() {
       //TODO: Website aus Textfeld lesen
-      _password =
-          Crypt.sha256('web.com', salt: _controller.text).hash.substring(0, 10);
+      _password = Crypt.sha256('web.com', salt: _controllerMasterPassword.text).hash.substring(0, 10);
     });
   }
 
   @override
   void initState() {
     super.initState();
-    _controller = TextEditingController();
-    //TODO: Delete for release
-    _controller.text = '12345';
+    _controllerMasterPassword = TextEditingController();
+    _controllerWebsite = TextEditingController();
   }
 
   @override
@@ -61,21 +60,34 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             Container(
               margin: EdgeInsets.all(8.0),
-              //TODO: TextField für Website
               child: TextField(
-                controller: _controller,
+                controller: _controllerMasterPassword,
                 autocorrect: false,
                 obscureText: true,
                 enableSuggestions: false,
                 decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Enter Master Password',
-                    labelText: 'Master Password'),
+                  border: OutlineInputBorder(),
+                  hintText: 'Enter Master Password',
+                  labelText: 'Master Password',
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.all(8.0),
+              child: TextField(
+                controller: _controllerWebsite,
+                autocorrect: false,
+                enableSuggestions: false,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Enter Webiste',
+                  labelText: 'Website',
+                ),
               ),
             ),
             ElevatedButton(
               // übergeben von Funktion mit Parameter
-              onPressed: () => _generatePassword(_controller.text),
+              onPressed: () => _generatePassword(_controllerMasterPassword.text),
               child: Text('Generate Password'),
             ),
             //TODO: Text formatieren https://api.flutter.dev/flutter/painting/TextStyle-class.html
