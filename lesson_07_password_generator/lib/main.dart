@@ -61,6 +61,13 @@ class _MyHomePageState extends State<MyHomePage> {
         // TODO: Button hinzufügen für neue Websites
         // TODO: Möglichkeit zum löschen von Websites
         title: Text(widget.title),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.add),
+            tooltip: 'Add Website',
+            onPressed: null,
+          ),
+        ],
       ),
       body: Center(
         child: Column(
@@ -92,18 +99,6 @@ class _MyHomePageState extends State<MyHomePage> {
             PasswordCard(
               website: "google.com",
               password: _password2,
-            ),
-            PasswordCard(
-              website: "discord.com",
-              password: _password3,
-            ),
-            PasswordCard(
-              website: "discord.com",
-              password: _password3,
-            ),
-            PasswordCard(
-              website: "discord.com",
-              password: _password3,
             ),
             PasswordCard(
               website: "discord.com",

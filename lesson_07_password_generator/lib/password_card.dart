@@ -17,6 +17,7 @@ class PasswordCard extends StatelessWidget {
             Clipboard.setData(
               ClipboardData(text: password),
             ),
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Password copied')))
           },
           // TODO: Anstelle von Card ElevatedButton benutzen https://api.flutter.dev/flutter/material/ElevatedButton-class.html oder lösung finden für inkwell
           child: Card(
