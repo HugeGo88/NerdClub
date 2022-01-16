@@ -1,5 +1,6 @@
 import 'package:crypt/crypt.dart';
 import 'package:flutter/material.dart';
+import 'package:lesson_07_password_generator/password_card.dart';
 
 void main() {
   runApp(const MyApp());
@@ -89,14 +90,17 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () => _generatePassword(_controllerMasterPassword.text),
               child: const Text('Generate Password'),
             ),
-            Text(
-              _password,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 50,
-                color: Colors.blue,
-                backgroundColor: Colors.deepOrange.shade300,
-              ),
+            PasswordCard(
+              website: "web.de",
+              password: "",
+            ),
+            PasswordCard(
+              website: "google.com",
+              password: "",
+            ),
+            PasswordCard(
+              website: "discord.com",
+              password: "",
             ),
           ],
         ),
