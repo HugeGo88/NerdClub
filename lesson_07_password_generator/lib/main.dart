@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.all(8.0),
+              margin: const EdgeInsets.all(8.0),
               child: TextField(
                 controller: _controllerMasterPassword,
                 autocorrect: false,
@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Container(
-              margin: EdgeInsets.all(8.0),
+              margin: const EdgeInsets.all(8.0),
               child: TextField(
                 controller: _controllerWebsite,
                 autocorrect: false,
@@ -87,10 +87,17 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
               // übergeben von Funktion mit Parameter
               onPressed: () => _generatePassword(_controllerMasterPassword.text),
-              child: Text('Generate Password'),
+              child: const Text('Generate Password'),
             ),
-            //TODO: Text formatieren https://api.flutter.dev/flutter/painting/TextStyle-class.html
-            Text(_password),
+            Text(
+              _password,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 50,
+                color: Colors.blue,
+                backgroundColor: Colors.deepOrange.shade300,
+              ),
+            ),
           ],
         ),
       ),
