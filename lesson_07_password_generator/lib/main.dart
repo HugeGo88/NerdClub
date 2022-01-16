@@ -33,13 +33,15 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   late TextEditingController _controllerMasterPassword;
-  late TextEditingController _controllerWebsite;
   String _password1 = '';
   String _password2 = '';
   String _password3 = '';
 
   void _generatePassword(String masterPW) {
     setState(() {
+      //TODO: Einstellungen hinzufügen für Länge
+      //TODO: Algorithmus für Passwortgenerierung ändern
+      //TODO: Dynamisch Widgets hinzufügen (UI)
       _password1 = Crypt.sha256("web.de", salt: _controllerMasterPassword.text).hash.substring(0, 10);
       _password2 = Crypt.sha256("google.com", salt: _controllerMasterPassword.text).hash.substring(0, 10);
       _password3 = Crypt.sha256("discord.com", salt: _controllerMasterPassword.text).hash.substring(0, 10);
@@ -50,13 +52,14 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     _controllerMasterPassword = TextEditingController();
-    _controllerWebsite = TextEditingController();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // TODO: Button hinzufügen für neue Websites
+        // TODO: Möglichkeit zum löschen von Websites
         title: Text(widget.title),
       ),
       body: Center(
@@ -76,24 +79,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            Container(
-              margin: const EdgeInsets.all(8.0),
-              child: TextField(
-                controller: _controllerWebsite,
-                autocorrect: false,
-                enableSuggestions: false,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Enter Webiste',
-                  labelText: 'Website',
-                ),
-              ),
-            ),
             ElevatedButton(
               // übergeben von Funktion mit Parameter
               onPressed: () => _generatePassword(_controllerMasterPassword.text),
               child: const Text('Generate Password'),
             ),
+            //TODO: Liste Scrollbar machen
             PasswordCard(
               website: "web.de",
               password: _password1,
@@ -101,6 +92,18 @@ class _MyHomePageState extends State<MyHomePage> {
             PasswordCard(
               website: "google.com",
               password: _password2,
+            ),
+            PasswordCard(
+              website: "discord.com",
+              password: _password3,
+            ),
+            PasswordCard(
+              website: "discord.com",
+              password: _password3,
+            ),
+            PasswordCard(
+              website: "discord.com",
+              password: _password3,
             ),
             PasswordCard(
               website: "discord.com",
