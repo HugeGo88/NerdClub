@@ -34,11 +34,15 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   late TextEditingController _controllerMasterPassword;
   late TextEditingController _controllerWebsite;
-  String _password = 'Nichts';
+  String _password1 = '';
+  String _password2 = '';
+  String _password3 = '';
 
   void _generatePassword(String masterPW) {
     setState(() {
-      _password = Crypt.sha256(_controllerWebsite.text, salt: _controllerMasterPassword.text).hash.substring(0, 10);
+      _password1 = Crypt.sha256("web.de", salt: _controllerMasterPassword.text).hash.substring(0, 10);
+      _password2 = Crypt.sha256("google.com", salt: _controllerMasterPassword.text).hash.substring(0, 10);
+      _password3 = Crypt.sha256("discord.com", salt: _controllerMasterPassword.text).hash.substring(0, 10);
     });
   }
 
@@ -92,15 +96,15 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             PasswordCard(
               website: "web.de",
-              password: "",
+              password: _password1,
             ),
             PasswordCard(
               website: "google.com",
-              password: "",
+              password: _password2,
             ),
             PasswordCard(
               website: "discord.com",
-              password: "",
+              password: _password3,
             ),
           ],
         ),
