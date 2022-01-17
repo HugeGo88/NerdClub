@@ -34,7 +34,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   late TextEditingController _controllerMasterPassword;
   late TextEditingController _controllerWebsite;
-  List<String> _websites = ["web.de", "google.com", "discord.com"];
+  final List<String> _websites = ["web.de", "google.com", "discord.com"];
 
   void _redraw() {
     setState(() {});
@@ -44,6 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Navigator.of(context).pop();
     setState(() {
       _websites.add(_controllerWebsite.text);
+      _controllerWebsite.text = "";
     });
   }
 
@@ -78,11 +79,12 @@ class _MyHomePageState extends State<MyHomePage> {
     _controllerWebsite = TextEditingController();
   }
 
+//TODO: Add settings page (TabView)
+//TODO:Speicheredaten
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // TODO: Button hinzufügen für neue Websites
         // TODO: Möglichkeit zum löschen von Websites
         title: Text(widget.title),
         actions: [
