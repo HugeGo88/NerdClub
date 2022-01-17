@@ -33,11 +33,39 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   late TextEditingController _controllerMasterPassword;
-  List<String> websites = ["web.de", "google.com", "discord.com", "a", "b", "c"];
+  late TextEditingController _controllerWebsite;
+  List<String> _websites = ["web.de", "google.com", "discord.com"];
 
   void _redraw() {
     setState(() {});
   }
+
+  void _addWebsite() {
+    Navigator.of(context).pop();
+    setState(() {
+      _websites.add(_controllerWebsite.text);
+    });
+  }
+
+  Future _openDialog() => showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text("Add Website"),
+          content: TextField(
+            controller: _controllerWebsite,
+            autofocus: true,
+            decoration: InputDecoration(
+              hintText: "Enter your website",
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: _addWebsite,
+              child: Text("SUBMIT"),
+            )
+          ],
+        ),
+      );
 
   String _generatePassword(String masterPW, String website) {
     return Crypt.sha256(website, salt: _controllerMasterPassword.text).hash.substring(0, 10);
@@ -47,6 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     _controllerMasterPassword = TextEditingController();
+    _controllerWebsite = TextEditingController();
   }
 
   @override
@@ -60,7 +89,9 @@ class _MyHomePageState extends State<MyHomePage> {
           IconButton(
             icon: const Icon(Icons.add),
             tooltip: 'Add Website',
-            onPressed: null,
+            onPressed: () {
+              _openDialog();
+            },
           ),
         ],
       ),
@@ -90,11 +121,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ListView.builder(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: websites.length,
+              itemCount: _websites.length,
               itemBuilder: (context, index) {
                 return PasswordCard(
-                  password: _generatePassword(_controllerMasterPassword.text, websites[index]),
-                  website: websites[index],
+                  password: _generatePassword(_controllerMasterPassword.text, _websites[index]),
+                  website: _websites[index],
                 );
               },
             ),
