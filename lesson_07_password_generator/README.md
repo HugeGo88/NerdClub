@@ -16,3 +16,6 @@
 * [x] Neumalen der HMI
 * [x] ListView.builder
 * [x] Textstyling
+* [ ] Einträge löschen
+* [ ] Speichern und laden von Einstellungen / Daten
+* [ ] Einstellungsseite mit TabViewController
