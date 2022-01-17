@@ -33,19 +33,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   late TextEditingController _controllerMasterPassword;
-  String _password1 = '';
-  String _password2 = '';
-  String _password3 = '';
+  List<String> websites = ["web.de", "google.com", "discord.com", "a", "b", "c"];
 
-  void _generatePassword(String masterPW) {
-    setState(() {
-      //TODO: Einstellungen hinzufügen für Länge
-      //TODO: Algorithmus für Passwortgenerierung ändern
-      //TODO: Dynamisch Widgets hinzufügen (UI)
-      _password1 = Crypt.sha256("web.de", salt: _controllerMasterPassword.text).hash.substring(0, 10);
-      _password2 = Crypt.sha256("google.com", salt: _controllerMasterPassword.text).hash.substring(0, 10);
-      _password3 = Crypt.sha256("discord.com", salt: _controllerMasterPassword.text).hash.substring(0, 10);
-    });
+  String _generatePassword(String masterPW, String website) {
+    return Crypt.sha256(website, salt: _controllerMasterPassword.text).hash.substring(0, 10);
   }
 
   @override
@@ -69,7 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      body: Center(
+      body: SingleChildScrollView(
+        physics: ScrollPhysics(),
         child: Column(
           children: [
             Container(
@@ -88,21 +80,19 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ElevatedButton(
               // übergeben von Funktion mit Parameter
-              onPressed: () => _generatePassword(_controllerMasterPassword.text),
+              onPressed: null,
               child: const Text('Generate Password'),
             ),
-            //TODO: Liste Scrollbar machen
-            PasswordCard(
-              website: "web.de",
-              password: _password1,
-            ),
-            PasswordCard(
-              website: "google.com",
-              password: _password2,
-            ),
-            PasswordCard(
-              website: "discord.com",
-              password: _password3,
+            ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: websites.length,
+              itemBuilder: (context, index) {
+                return PasswordCard(
+                  password: _generatePassword(_controllerMasterPassword.text, websites[index]),
+                  website: websites[index],
+                );
+              },
             ),
           ],
         ),
