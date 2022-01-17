@@ -32,13 +32,11 @@ class PasswordCard extends StatelessWidget {
                 children: [
                   Text(
                     "Website: $website",
-                    style: const TextStyle(
-                      fontSize: 30,
-                    ),
+                    style: Theme.of(context).textTheme.subtitle1!.copyWith(fontWeight: FontWeight.bold),
                   ),
                   Text(
                     "Password: $password",
-                    style: const TextStyle(fontSize: 30),
+                    style: Theme.of(context).textTheme.subtitle1!,
                   ),
                 ],
               ),

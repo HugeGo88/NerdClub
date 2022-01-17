@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Password Generator',
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
@@ -34,6 +34,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   late TextEditingController _controllerMasterPassword;
   List<String> websites = ["web.de", "google.com", "discord.com", "a", "b", "c"];
+
+  void _redraw() {
+    setState(() {});
+  }
 
   String _generatePassword(String masterPW, String website) {
     return Crypt.sha256(website, salt: _controllerMasterPassword.text).hash.substring(0, 10);
@@ -80,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ElevatedButton(
               // übergeben von Funktion mit Parameter
-              onPressed: null,
+              onPressed: _redraw,
               child: const Text('Generate Password'),
             ),
             ListView.builder(
