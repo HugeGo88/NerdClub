@@ -48,21 +48,42 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  Future _openDialog() => showDialog(
+  Future _openNewWebsiteDialog() => showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text("Add Website"),
+          title: const Text("Add Website"),
           content: TextField(
             controller: _controllerWebsite,
             autofocus: true,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: "Enter your website",
             ),
           ),
           actions: [
             TextButton(
               onPressed: _addWebsite,
-              child: Text("SUBMIT"),
+              child: const Text("SUBMIT"),
+            )
+          ],
+        ),
+      );
+
+  Future _openChangeWebsiteDialog() => showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text("Change Website"),
+          content: TextField(
+            controller: _controllerWebsite,
+            autofocus: true,
+            decoration: const InputDecoration(
+              hintText: "Enter modified website",
+            ),
+          ),
+          actions: [
+            TextButton(
+              //TODO: Create Mehtode to change password
+              onPressed: null,
+              child: const Text("SUBMIT"),
             )
           ],
         ),
@@ -92,13 +113,13 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: const Icon(Icons.add),
             tooltip: 'Add Website',
             onPressed: () {
-              _openDialog();
+              _openNewWebsiteDialog();
             },
           ),
         ],
       ),
       body: SingleChildScrollView(
-        physics: ScrollPhysics(),
+        physics: const ScrollPhysics(),
         child: Column(
           children: [
             Container(
@@ -129,6 +150,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   title: Text(_websites[index]),
                   subtitle: Text(_generatePassword(_controllerMasterPassword.text, _websites[index])),
                   trailing: const Icon(Icons.alternate_email),
+                  onLongPress: () {
+                    _openChangeWebsiteDialog();
+                  },
                   onTap: () => {
                     Clipboard.setData(
                       ClipboardData(text: _generatePassword(_controllerMasterPassword.text, _websites[index])),
