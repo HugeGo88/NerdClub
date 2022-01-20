@@ -1,6 +1,6 @@
 import 'package:crypt/crypt.dart';
 import 'package:flutter/material.dart';
-import 'package:lesson_07_password_generator/password_card.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -121,13 +121,20 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Text('Generate Password'),
             ),
             ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: _websites.length,
               itemBuilder: (context, index) {
-                return PasswordCard(
-                  password: _generatePassword(_controllerMasterPassword.text, _websites[index]),
-                  website: _websites[index],
+                return ListTile(
+                  title: Text(_websites[index]),
+                  subtitle: Text(_generatePassword(_controllerMasterPassword.text, _websites[index])),
+                  trailing: const Icon(Icons.alternate_email),
+                  onTap: () => {
+                    Clipboard.setData(
+                      ClipboardData(text: _generatePassword(_controllerMasterPassword.text, _websites[index])),
+                    ),
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Password copied')))
+                  },
                 );
               },
             ),
